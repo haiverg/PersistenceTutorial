@@ -1,0 +1,24 @@
+<org.persistence.tutorial.MyLibrary>
+  <name>Test</name>
+  <books>
+    <org.persistence.tutorial.Book>
+      <title>Book1</title>
+      <author>unknown author</author>
+      <person>
+        <name>Fred</name>
+        <maximumBooks>3</maximumBooks>
+      </person>
+    </org.persistence.tutorial.Book>
+    <org.persistence.tutorial.Book>
+      <title>Book2</title>
+      <author>unknown author</author>
+    </org.persistence.tutorial.Book>
+  </books>
+  <people>
+    <org.persistence.tutorial.Person reference="../../books/org.persistence.tutorial.Book/person"/>
+    <org.persistence.tutorial.Person>
+      <name>Sue</name>
+      <maximumBooks>3</maximumBooks>
+    </org.persistence.tutorial.Person>
+  </people>
+</org.persistence.tutorial.MyLibrary>

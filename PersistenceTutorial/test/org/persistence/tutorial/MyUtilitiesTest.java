@@ -71,6 +71,21 @@ public class MyUtilitiesTest {
 		
 	}
 	
+	@Test public void saveToXMLFile() {
+		MyLibrary startMyLibrary = createMyLibrary();
+		String fileName = "testmylibrary.xml";
+		File testFile = new File(fileName);
+		testFile.delete();
+		assertFalse("File should not exist", testFile.exists());
+		assertTrue("File should have been saved", MyUtilities.saveMyLibraryToXMLFile(fileName,startMyLibrary));
+		MyLibrary endMyLibrary = MyUtilities.getMyLibraryFromXMLFile(fileName);
+		assertEquals("Test", endMyLibrary.getName());
+		assertEquals(2,  endMyLibrary.getBooks().size());
+		assertEquals(2,  endMyLibrary.getPeople().size());
+		assertEquals("Fred", endMyLibrary.getBooks().get(0).getPerson().getName());
+		
+		
+	}
 	
 	
 }

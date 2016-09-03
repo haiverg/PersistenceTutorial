@@ -67,4 +67,13 @@ public class MyUtilities {
 
 	}
 
+	public static boolean saveMyLibraryToXMLFile(String fileName,
+			MyLibrary ml) {
+		return saveStringToFile(fileName, convertToXML(ml));
+	}
+
+	public static MyLibrary getMyLibraryFromXMLFile(String fileName) {
+		return convertFromXML(getStringFromFile(fileName));
+	}
+
 }
