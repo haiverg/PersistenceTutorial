@@ -10,8 +10,8 @@ public class MyUtilitiesTest {
 
 	@Test
 	public void saveStringToFile() {
-		String saveString = "this in a test line one\n" + 
-				"this is test line two\n";
+		String saveString = "this in a test line one of two\n" + 
+				"this is test line two of two\n";
 	File testFile = new File("testsavetostring.txt");	
 	testFile.delete();
 	assertFalse("File should not exist", testFile.exists());
