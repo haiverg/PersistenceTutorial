@@ -13,7 +13,7 @@ public class MyUtilities {
 					new FileWriter(fileName));
 			try {
 				bw.write(saveString);
-				saved = True;
+				saved = true;
 			} 
 			finally {
 				bw.close();
