@@ -2,6 +2,9 @@ package org.persistence.tutorial;
 
 import java.io.*;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 public class MyUtilities {
 
 	public static boolean saveStringToFile(String fileName, String saveString) {
@@ -46,6 +49,22 @@ public class MyUtilities {
 			ex.printStackTrace();
 		}
 		return sb.toString();
+	}
+
+	public static String convertToXML(MyLibrary ml) {
+		XStream xstream = new XStream (new DomDriver());
+		return xstream.toXML(ml);
+	}
+
+	public static MyLibrary convertFromXML(String XMLString) {
+		MyLibrary ml = null;
+		XStream xstream = new XStream (new DomDriver());
+		Object obj  = xstream.fromXML(XMLString);
+		if (obj instanceof MyLibrary) {
+			ml = (MyLibrary) obj;
+		}
+		return ml;
+
 	}
 
 }

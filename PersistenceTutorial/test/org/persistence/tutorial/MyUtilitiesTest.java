@@ -53,9 +53,24 @@ public class MyUtilitiesTest {
 		ml.addBook(b2);
 		ml.addPerson(p1);
 		ml.addPerson(p2);
-		
+		ml.checkOut(b1, p1);
 		return ml;
 	}
+	
+	
+	@Test 
+	public void convertToXML(){
+		MyLibrary startMyLibrary = createMyLibrary();
+		String testXMLOut = MyUtilities.convertToXML (startMyLibrary);
+		MyLibrary endMyLibrary = MyUtilities.convertFromXML(testXMLOut);
+		
+		assertEquals("Test", endMyLibrary.getName());
+		assertEquals(2,  endMyLibrary.getBooks().size());
+		assertEquals(2,  endMyLibrary.getPeople().size());
+		assertEquals("Fred", endMyLibrary.getBooks().get(0).getPerson().getName());
+		
+	}
+	
 	
 	
 }
