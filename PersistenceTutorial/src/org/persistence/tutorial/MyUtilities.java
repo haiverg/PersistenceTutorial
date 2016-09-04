@@ -84,4 +84,15 @@ public class MyUtilities {
 		return convertFromXML(getStringFromFile(fileName));
 	}
 
+	public static boolean saveMyLibraryToSerialFile(String fileName,
+			MyLibrary startMyLibrary) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static MyLibrary getMyLibraryFromSerialFile(String fileName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

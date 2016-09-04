@@ -86,6 +86,21 @@ public class MyUtilitiesTest {
 		
 		
 	}
+	@Test public void saveToSerialFile() {
+		MyLibrary startMyLibrary = createMyLibrary();
+		String fileName = "testmylibrary.ser";
+		File testFile = new File(fileName);
+		testFile.delete();
+		assertFalse("File should not exist", testFile.exists());
+		assertTrue("File should have been saved", MyUtilities.saveMyLibraryToSerialFile(fileName,startMyLibrary));
+		MyLibrary endMyLibrary = MyUtilities.getMyLibraryFromSerialFile(fileName);
+		assertEquals("Test", endMyLibrary.getName());
+		assertEquals(2,  endMyLibrary.getBooks().size());
+		assertEquals(2,  endMyLibrary.getPeople().size());
+		assertEquals("Fred", endMyLibrary.getBooks().get(0).getPerson().getName());
+		
+		
+	}
 	
 	
 }
