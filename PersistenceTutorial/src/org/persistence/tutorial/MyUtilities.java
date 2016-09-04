@@ -105,8 +105,24 @@ public class MyUtilities {
 	}
 
 	public static MyLibrary getMyLibraryFromSerialFile(String fileName) {
-		// TODO Auto-generated method stub
-		return null;
+		MyLibrary ml = null;
+		try {
+			ObjectInputStream ois = new ObjectInputStream(
+					new BufferedInputStream(
+							new FileInputStream(fileName)));
+			try {
+				Object obj = ois.readObject();
+				if (obj instanceof MyLibrary) {
+					ml = (MyLibrary) obj;
+				}
+			} finally {
+				ois.close();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return ml;
+		
 	}
 
 }
