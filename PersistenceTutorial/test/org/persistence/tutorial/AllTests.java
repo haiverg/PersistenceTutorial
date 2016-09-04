@@ -7,7 +7,8 @@ import org.junit.runners.*;
 @Suite.SuiteClasses(value={
 		PersonTest.class, 
 		BookTest.class,
-		MyLibraryTest.class
+		MyLibraryTest.class,
+		MyUtilitiesTest.class
 })
 
 
