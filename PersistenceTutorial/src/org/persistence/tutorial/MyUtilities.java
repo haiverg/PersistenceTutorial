@@ -52,22 +52,22 @@ public class MyUtilities {
 	}
 
 	public static String convertToXML(MyLibrary ml) {
-		XStream xstream = new XStream (new DomDriver());
+		XStream xstream = new XStream(new DomDriver());
 		xstream.setMode(XStream.ID_REFERENCES);
-		xstream.alias("person",	Person.class);
+		xstream.alias("person", Person.class);
 		xstream.alias("book", Book.class);
-		xstream.alias("myLibrary",	MyLibrary.class);
+		xstream.alias("myLibrary", MyLibrary.class);
 		return xstream.toXML(ml);
 	}
 
 	public static MyLibrary convertFromXML(String XMLString) {
 		MyLibrary ml = null;
-		XStream xstream = new XStream (new DomDriver());
+		XStream xstream = new XStream(new DomDriver());
 		xstream.setMode(XStream.ID_REFERENCES);
-		xstream.alias("person",	Person.class);
+		xstream.alias("person", Person.class);
 		xstream.alias("book", Book.class);
-		xstream.alias("myLibrary",	MyLibrary.class);
-		Object obj  = xstream.fromXML(XMLString);
+		xstream.alias("myLibrary", MyLibrary.class);
+		Object obj = xstream.fromXML(XMLString);
 		if (obj instanceof MyLibrary) {
 			ml = (MyLibrary) obj;
 		}
@@ -75,8 +75,7 @@ public class MyUtilities {
 
 	}
 
-	public static boolean saveMyLibraryToXMLFile(String fileName,
-			MyLibrary ml) {
+	public static boolean saveMyLibraryToXMLFile(String fileName, MyLibrary ml) {
 		return saveStringToFile(fileName, convertToXML(ml));
 	}
 
@@ -85,9 +84,24 @@ public class MyUtilities {
 	}
 
 	public static boolean saveMyLibraryToSerialFile(String fileName,
-			MyLibrary startMyLibrary) {
-		// TODO Auto-generated method stub
-		return false;
+			MyLibrary ml) {
+		boolean saved = false;
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(
+					new BufferedOutputStream(new FileOutputStream(fileName)));
+			// inner try block
+			try {
+				oos.writeObject(ml);
+				saved = true;
+			} finally {
+				oos.close();
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return saved;
+
 	}
 
 	public static MyLibrary getMyLibraryFromSerialFile(String fileName) {
